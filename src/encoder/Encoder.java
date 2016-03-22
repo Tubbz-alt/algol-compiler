@@ -39,6 +39,16 @@ import util.AST.TypeVoid;
 import util.AST.VariableDeclaration;
 import util.AST.WhileCommand;
 
+/**
+ * Encoder class
+ * 
+ * @version 2016-march-22
+ * @course Compiladores
+ * @author Gustavo H P Carvalho
+ * @email gustavohpcarvalho@ecomp.poli.br
+ * @author Pedro H Q Santos
+ * @email phqs@ecomp.poli.br
+ */
 public class Encoder implements Visitor {
 
 	private ObjectCode objectCode;
