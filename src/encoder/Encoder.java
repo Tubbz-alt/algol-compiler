@@ -44,8 +44,6 @@ import util.AST.WhileCommand;
  * 
  * @version 2016-march-22
  * @course Compiladores
- * @author Gustavo H P Carvalho
- * @email gustavohpcarvalho@ecomp.poli.br
  * @author Pedro H Q Santos
  * @email phqs@ecomp.poli.br
  */
