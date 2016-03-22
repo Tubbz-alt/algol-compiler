@@ -1,5 +1,13 @@
 package encoder;
 
+/**
+ * ObjectCode class
+ * 
+ * @version 2016-march-22
+ * @course Compiladores
+ * @author Pedro H Q Santos
+ * @email phqs@ecomp.poli.br
+ */
 public class ObjectCode {
 	private StringBuffer extern, data, text;
 	
