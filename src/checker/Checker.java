@@ -38,6 +38,15 @@ import util.AST.VariableDeclaration;
 import util.AST.WhileCommand;
 import util.symbolsTable.IdentificationTable;
 
+/**
+ * Scanner class
+ * 
+ * @version 2016-march-22
+ * @course Compiladores
+ * @author Pedro H Q Santos
+ * @email phqs@ecomp.poli.br
+ */
+
 public class Checker implements Visitor {
 
 	IdentificationTable idTable = null;
@@ -61,7 +70,7 @@ public class Checker implements Visitor {
 		for (DeclarationCommand dCmd : program.getDCmd()) {
 			dCmd.visit(this, list);
 		}
-		// Verifica se na tabela de sÌmbolos tem alguma funÁ„o chamada "main"
+		// Verifica se na tabela de s√≠mbolos tem alguma fun√ß√£o chamada "main"
 		// (REGRA 9)
 		if (idTable.retrieve("main") == null || !(idTable.retrieve("main") instanceof FunctionDeclaration))
 			throw new SemanticException("A function \"main\" must be declared.");
@@ -78,10 +87,10 @@ public class Checker implements Visitor {
 		list.add(funcDec);
 		String id = funcDec.getId().getSpelling();
 
-		// Adiciona a funÁ„o na tabela de sÌmbolos
+		// Adiciona a fun√ß√£o na tabela de s√≠mbolos
 		idTable.enter(id, funcDec);
 
-		// Abre o escopo da lista de par‚metros
+		// Abre o escopo da lista de par√¢metros
 		idTable.openScope();
 
 		funcDec.getId().visit(this, list);
@@ -95,7 +104,7 @@ public class Checker implements Visitor {
 		boolean hasReturn = false;
 		String retType = (String) funcDec.getType().visit(this, list);
 
-		// Abre o escopo das vari·veis locais
+		// Abre o escopo das vari√°veis locais
 		idTable.openScope();
 		for (Command c : funcDec.getCommands()) {
 			c.visit(this, list);
@@ -111,7 +120,7 @@ public class Checker implements Visitor {
 		}
 		hasReturn = hasReturn || hasWhileReturn || hasIfReturn;
 
-		// Se o retorno da funÁ„o for diferente de void, deve haver pelo menos
+		// Se o retorno da fun√ß√£o for diferente de void, deve haver pelo menos
 		// um comando de retorno (REGRA 4)
 		if (hasReturn == false && !retType.equals("void")) {
 			throw new SemanticException("At least one ret command should be defined for function \"" + id + "\".");
@@ -131,7 +140,7 @@ public class Checker implements Visitor {
 	}
 
 	public Object visitVarDec(VariableDeclaration varDec, ArrayList<AST> list) throws SemanticException {
-		// Adiciona a vari·vel na tabela de sÌmbolos
+		// Adiciona a vari√°vel na tabela de s√≠mbolos
 		idTable.enter(varDec.getId().getSpelling(), varDec);
 		varDec.setScope(idTable.getScope());
 		varDec.getType().visit(this, list);
@@ -141,7 +150,7 @@ public class Checker implements Visitor {
 
 	public Object visitLocalVarDec(LocalVariableDeclaration localVarDec, ArrayList<AST> list) throws SemanticException {
 		for (AST ast : list) {
-			// Verifica se essa vari·vel local foi declarada dentro de um if ou
+			// Verifica se essa vari√°vel local foi declarada dentro de um if ou
 			// um while (REGRA 10)
 			if (ast instanceof IfCommand || ast instanceof WhileCommand) {
 				String block = ast instanceof IfCommand ? "if" : "while";
@@ -158,12 +167,12 @@ public class Checker implements Visitor {
 		String type = (String) asgn.getId().visit(this, list);
 		String id = asgn.getId().getSpelling();
 
-		// Se o id n„o foi uma declaraÁ„o de vari·vel (REGRA 8)
+		// Se o id n√£o foi uma declara√ß√£o de vari√°vel (REGRA 8)
 		if (!(idTable.retrieve(id) instanceof VariableDeclaration)) {
 			throw new SemanticException("\"" + id + "\" must be a variable.");
 		}
 
-		// Se o tipo da vari·vel for diferente do tipo da express„o (REGRA 8)
+		// Se o tipo da vari√°vel for diferente do tipo da express√£o (REGRA 8)
 		if (!type.equals(asgn.getExp().visit(this, list))) {
 			throw new SemanticException("Assign error: the type of \"" + id + "\" is " + type + ".");
 		}
@@ -210,7 +219,7 @@ public class Checker implements Visitor {
 		}
 		list.remove(cmdIf);
 		
-		// Se n„o houver else, no if deve haver um retorno e sua condiÁ„o tem que ser sempre atendida.
+		// Se n√£o houver else, no if deve haver um retorno e sua condi√ß√£o tem que ser sempre atendida.
 		// Se houver um else, deve haver um retorno nele e no if
 		return (!hasElse && hasIfReturn && validReturn) || (hasElse && hasIfReturn && hasElseReturn); 
 	}
@@ -267,7 +276,7 @@ public class Checker implements Visitor {
 		funcCall.getId().visit(this, list);
 		String id = funcCall.getId().getSpelling();
 
-		// Se a funÁ„o n„o tiver sido declarada (REGRA 1)
+		// Se a fun√ß√£o n√£o tiver sido declarada (REGRA 1)
 		if (!idTable.containsKey(id)) {
 			throw new SemanticException("Function \"" + id + "\" not defined.");
 		}
@@ -278,13 +287,13 @@ public class Checker implements Visitor {
 			FunctionDeclaration funcDec = (FunctionDeclaration) idTable.retrieve(funcCall.getId().getSpelling());
 			ArrayList<VariableDeclaration> varDecList = funcDec.getPl().getVarDecList();
 			if (varDecList.size() != 0) {
-				// O n˙mero de argumentos tem que ser igual ao n˙mero de par‚metros
+				// O n√∫mero de argumentos tem que ser igual ao n√∫mero de par√¢metros
 				// (REGRA 3)
 				throw new SemanticException("Function \"" + id + "\" has wrong argument number.");
 			}
 		}
 
-		// Recupera a declaraÁ„o de funÁ„o da lista de objetos
+		// Recupera a declara√ß√£o de fun√ß√£o da lista de objetos
 		String functionId = null;
 		FunctionDeclaration funcDec = null;
 		for (AST ast : list) {
@@ -297,8 +306,8 @@ public class Checker implements Visitor {
 
 		list.remove(funcCall);
 
-		// Retorna o tipo da chamada de funÁ„o baseado no tipo declarado na
-		// funÁ„o
+		// Retorna o tipo da chamada de fun√ß√£o baseado no tipo declarado na
+		// fun√ß√£o
 		return funcDec.getType().getSpelling();
 	}
 
@@ -306,7 +315,7 @@ public class Checker implements Visitor {
 		String functionId = null;
 		FunctionDeclaration funcDec = null;
 
-		// Recupera a chamada de funÁ„o da lista de objetos
+		// Recupera a chamada de fun√ß√£o da lista de objetos
 		for (AST ast : list) {
 			if (ast instanceof FunctionCall) {
 				functionId = ((FunctionCall) ast).getId().getSpelling();
@@ -319,13 +328,13 @@ public class Checker implements Visitor {
 		ArrayList<Expression> expList = argList.getExps();
 		String id = funcDec.getId().getSpelling();
 
-		// O n˙mero de argumentos tem que ser igual ao n˙mero de par‚metros
+		// O n√∫mero de argumentos tem que ser igual ao n√∫mero de par√¢metros
 		// (REGRA 3)
 		if (expList.size() != varDecList.size()) {
 			throw new SemanticException("Function \"" + id + "\" has wrong argument number.");
 		}
 
-		// O tipo dos argumentos tem que ser igual ao tipo dos par‚metros (REGRA
+		// O tipo dos argumentos tem que ser igual ao tipo dos par√¢metros (REGRA
 		// 3)
 		for (int i = 0; i < expList.size(); i++) {
 			if (!varDecList.get(i).getType().getSpelling().equals(expList.get(i).visit(this, list))) {
@@ -339,7 +348,7 @@ public class Checker implements Visitor {
 		String functionId = null;
 		FunctionDeclaration funcDec = null;
 
-		// Recupera a declaraÁ„o de funÁ„o da lista de objetos
+		// Recupera a declara√ß√£o de fun√ß√£o da lista de objetos
 		for (AST ast : list) {
 			if (ast instanceof FunctionDeclaration) {
 				functionId = ((FunctionDeclaration) ast).getId().getSpelling();
@@ -359,7 +368,7 @@ public class Checker implements Visitor {
 		}
 
 		// O tipo retornado deve ser igual ao tipo do retorno declarado na
-		// funÁ„o (REGRA 5)
+		// fun√ß√£o (REGRA 5)
 		if (!exp.equals(type)) {
 			throw new SemanticException("Function \"" + id + "\" should return a type " + type + ".");
 		}
@@ -383,7 +392,7 @@ public class Checker implements Visitor {
 			if ((op.equals(">") || op.equals("<") || op.equals(">=") || op.equals("<=")) && arithExp1.equals("bool")) {
 				throw new SemanticException("Operator not defined for type bool.");
 			}
-			// Qualquer operaÁ„o efetuada atÈ este ponto (==, !=, >, <, >= e
+			// Qualquer opera√ß√£o efetuada at√© este ponto (==, !=, >, <, >= e
 			// <=), deve retornar bool (REGRA 7)
 			resultExp = "bool";
 		}
@@ -396,7 +405,7 @@ public class Checker implements Visitor {
 		String term1, resultTerm;
 		term1 = resultTerm = (String) arithExp.getTerm().visit(this, list);
 		if (!arithExp.getTerms().isEmpty()) {
-			// Checa se o termo 1 È booleano (REGRA 7)
+			// Checa se o termo 1 √© booleano (REGRA 7)
 			if (!term1.equals("int")) {
 				throw new SemanticException("Operator not defined for type bool.");
 			}
@@ -408,7 +417,7 @@ public class Checker implements Visitor {
 					throw new SemanticException("Operator not defined for type bool.");
 				}
 			}
-			// Qualquer operaÁ„o efetuada atÈ este ponto (+,-), deve retornar
+			// Qualquer opera√ß√£o efetuada at√© este ponto (+,-), deve retornar
 			// int (REGRA 7)
 			resultTerm = "int";
 		}
@@ -419,7 +428,7 @@ public class Checker implements Visitor {
 		String factor1, resultFactor;
 		factor1 = resultFactor = (String) term.getFactor().visit(this, list);
 		if (!term.getFactors().isEmpty()) {
-			// Checa se o fator 1 È booleano (REGRA 7)
+			// Checa se o fator 1 √© booleano (REGRA 7)
 			if (!factor1.equals("int")) {
 				throw new SemanticException("Operator not defined for type bool.");
 			}
@@ -431,7 +440,7 @@ public class Checker implements Visitor {
 					throw new SemanticException("Operator not defined for type bool.");
 				}
 			}
-			// Qualquer operaÁ„o efetuada atÈ este ponto (*,/), deve retornar
+			// Qualquer opera√ß√£o efetuada at√© este ponto (*,/), deve retornar
 			// int (REGRA 7)
 			resultFactor = "int";
 		}
@@ -458,17 +467,17 @@ public class Checker implements Visitor {
 		VariableDeclaration varDec = null;
 		String id = tId.getSpelling();
 
-		// Se a vari·vel n„o tiver sido declarada (REGRA 1)
+		// Se a vari√°vel n√£o tiver sido declarada (REGRA 1)
 		if (!idTable.containsKey(id)) {
 			throw new SemanticException("\"" + id + "\" must be declared.");
 		}
 
-		// Recupera a declaraÁ„o do id na tabela de sÌmbolos
-		// Decora a AST de ID com declaraÁ„o
+		// Recupera a declara√ß√£o do id na tabela de s√≠mbolos
+		// Decora a AST de ID com declara√ß√£o
 		AST declaration = idTable.retrieve(tId.getSpelling());
 		tId.setDeclaration(declaration);
 
-		// Checa se o id proveio de uma declaraÁ„o de vari·vel ou de funÁ„o
+		// Checa se o id proveio de uma declara√ß√£o de vari√°vel ou de fun√ß√£o
 		// Decora a AST de ID com o tipo
 		if (declaration instanceof VariableDeclaration) {
 			varDec = (VariableDeclaration) idTable.retrieve(tId.getSpelling());
