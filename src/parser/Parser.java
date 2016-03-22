@@ -43,10 +43,12 @@ import util.AST.WhileCommand;
 /**
  * Parser class
  * 
- * @version 2010-august-29
- * @discipline Projeto de Compiladores
+ * @version 2016-march-22
+ * @course Compiladores
  * @author Gustavo H P Carvalho
  * @email gustavohpcarvalho@ecomp.poli.br
+ * @author Pedro H Q Santos
+ * @email phqs@ecomp.poli.br
  */
 public class Parser {
 
