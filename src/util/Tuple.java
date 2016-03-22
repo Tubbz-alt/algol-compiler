@@ -4,7 +4,7 @@ import util.AST.AST;
 import util.AST.Operator;
 
 /**
- * Scanner class
+ * Tuple class
  * 
  * @version 2016-march-22
  * @course Compiladores
