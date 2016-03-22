@@ -8,11 +8,14 @@ import util.AST.AST;
 import checker.SemanticException;
 
 /**
- * Identification table class
- * @version 2010-september-04
- * @discipline Compiladores
+ * Identification Table class
+ * 
+ * @version 2016-march-22
+ * @course Compiladores
  * @author Gustavo H P Carvalho
  * @email gustavohpcarvalho@ecomp.poli.br
+ * @author Pedro H Q Santos
+ * @email phqs@ecomp.poli.br
  */
 public class IdentificationTable {
 
