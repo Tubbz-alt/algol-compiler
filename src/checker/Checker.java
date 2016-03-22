@@ -39,7 +39,7 @@ import util.AST.WhileCommand;
 import util.symbolsTable.IdentificationTable;
 
 /**
- * Scanner class
+ * Checker class
  * 
  * @version 2016-march-22
  * @course Compiladores
