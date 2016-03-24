@@ -2,7 +2,7 @@
 Final Project for the course of Compilers at University of Pernambuco / Brazil
 
 
-#### Systax Analysis (Context-free Grammar)
+#### Syntax Analysis (Context-free Grammar)
 
 `Program` ::= ***begin***(`VariableDeclaration`**;** | `FunctionDeclaration`**;**)**end*
  
