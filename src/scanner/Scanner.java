@@ -2,7 +2,7 @@ package scanner;
 
 import compiler.Properties;
 import parser.GrammarSymbols;
-import util.Arquivo;
+import util.File;
 
 /**
  * Scanner class
@@ -18,7 +18,7 @@ import util.Arquivo;
 public class Scanner {
 
 	// The file object that will be used to read the source code
-	private Arquivo file;
+	private File file;
 	// The last char read from the source code
 	private char currentChar;
 	// The kind of the current token
@@ -32,7 +32,7 @@ public class Scanner {
 	 * Default constructor
 	 */
 	public Scanner() {
-		this.file = new Arquivo(Properties.sourceCodeLocation);
+		this.file = new File(Properties.sourceCodeLocation);
 		this.line = 0;
 		this.column = 0;
 		this.currentChar = this.file.readChar();
