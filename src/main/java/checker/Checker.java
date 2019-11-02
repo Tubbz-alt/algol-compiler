@@ -174,7 +174,7 @@ public class Checker implements Visitor {
 
 		// Se o tipo da variável for diferente do tipo da expressão (REGRA 8)
 		if (!type.equals(asgn.getExp().visit(this, list))) {
-			throw new SemanticException("Assign error: the type of \"" + id + "\" is " + type + ".");
+			throw new SemanticException("Assign error: the type of \"" + id + "\" is " + type + "");
 		}
 
 		return null;
@@ -370,7 +370,7 @@ public class Checker implements Visitor {
 		// O tipo retornado deve ser igual ao tipo do retorno declarado na
 		// função (REGRA 5)
 		if (!exp.equals(type)) {
-			throw new SemanticException("Function \"" + id + "\" should return a type " + type + ".");
+			throw new SemanticException("Function \"" + id + "\" should return a type " + type + "");
 		}
 		return exp;
 	}

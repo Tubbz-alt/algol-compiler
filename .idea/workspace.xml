@@ -2,74 +2,83 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f822eaf-427d-4b5a-9e0f-c49eb16dba09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/algol-compiler.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/algol-compiler.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checker/Checker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/checker/Checker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checker/SemanticException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/checker/SemanticException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checker/TestChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/checker/TestChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checker/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/checker/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/compiler/Compiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Properties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/compiler/Properties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/encoder/Encoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/encoder/Encoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/encoder/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/encoder/Instruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/encoder/ObjectCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/encoder/ObjectCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/encoder/TestEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/encoder/TestEncoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/GrammarSymbols.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/parser/GrammarSymbols.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/SyntacticException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/parser/SyntacticException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/TestParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/parser/TestParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scanner/LexicalException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scanner/LexicalException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scanner/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scanner/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scanner/TestScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scanner/TestScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scanner/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scanner/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/AST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/AST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/ArgumentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/ArgumentList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/ArithmeticExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/ArithmeticExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/AssignCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/AssignCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/BreakCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/BreakCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/ContinueCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/ContinueCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/DeclarationCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/DeclarationCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Expression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Factor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Factor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/FactorExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/FactorExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/FactorFunctionCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/FactorFunctionCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/FactorIdentifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/FactorIdentifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/FactorLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/FactorLiteral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/FunctionCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/FunctionCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/FunctionDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/FunctionDeclaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/GlobalVariableDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/GlobalVariableDeclaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Identifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Identifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/IfCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/IfCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Literal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/LocalVariableDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/LocalVariableDeclaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Logic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Number.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Operator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/ParameterList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/ParameterList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/PrintCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/PrintCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/ReturnCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/ReturnCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Term.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Term.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Terminal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/Type.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/TypeBool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/TypeBool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/TypeInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/TypeInt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/TypeVoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/TypeVoid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/VariableDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/VariableDeclaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/AST/WhileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/AST/WhileCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/File.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/symbolsTable/Attribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/symbolsTable/Attribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/symbolsTable/IdentificationTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/symbolsTable/IdentificationTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/symbolsTable/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/util/symbolsTable/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algol-compiler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/algol-compiler.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="algol-compiler" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="algol-compiler" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="algol-compiler" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+                <item name="test" type="396b929e:GradleViewContributor$SourceSetNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="algol-compiler" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="algol-compiler" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -88,7 +97,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -102,6 +111,50 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Gradle.algol-compiler">
+    <configuration name="algol-compiler [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="algol-compiler" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.algol-compiler" />
+        <item itemvalue="Gradle.algol-compiler [build]" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -112,7 +165,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572735936070</updated>
-      <workItem from="1572735938327" duration="1093000" />
+      <workItem from="1572735938327" duration="1280000" />
+      <workItem from="1572737252437" duration="9000" />
+      <workItem from="1572737277864" duration="98000" />
+      <workItem from="1572737386536" duration="705000" />
     </task>
     <servers />
   </component>
@@ -124,7 +180,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
