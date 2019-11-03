@@ -10,121 +10,117 @@ import java.io.*;
 
 public class File {
 
-    private BufferedReader in;
+    private static final int INITIAL_BUFFER_SIZE = 5;
+
+    private BufferedReader inputBuffer;
     private String[] buffer;
-    private int nextChar;
-    private int nextTokenLin, nextTokenCol;
-    private int primLin, contLin;
+    private int nextChar = 0;
+    private int nextTokenLin = 0;
+    private int firstLine = 0;
+    private int lineCounter = 0;
 
-     public File(String inputFilePath) {
-         try {
-             this.in = new BufferedReader(new FileReader(inputFilePath));
-
-             this.initBuffer();
-
-         } catch (IOException e) {
-             throw new RuntimeException(e.toString());
-         }
-     }
-
-    private void readLine() {
-        if (this.contLin <= 0) {
-            return;
+    public File(String inputFilePath) {
+        try {
+            inputBuffer = new BufferedReader(new FileReader(inputFilePath));
+            initBuffer();
+        } catch (IOException e) {
+            throw new RuntimeException(e.toString());
         }
-
-        this.buffer[this.primLin] = null;
-        this.nextChar = 0;
-        this.primLin++;
-        this.contLin--;
-
-        if (this.nextTokenLin >= 0 && this.nextTokenLin < this.primLin) {
-            this.findNext();
-        }
-
     }
 
     public char readChar() {
-        if (this.contLin <= 0) {
+        if (lineCounter <= 0) {
             return '\0';
         }
 
         char newChar;
-        String line = this.buffer[this.primLin];
-        if (this.nextChar >= line.length()) {
+        String line = buffer[firstLine];
+        if (nextChar >= line.length()) {
             newChar = '\n';
-            this.readLine();
+            readLine();
         } else {
-            newChar = line.charAt(this.nextChar++);
-            if (newChar != ' ' && this.nextTokenLin >= 0) {
-                this.findNext();
+            newChar = line.charAt(nextChar++);
+            if (newChar != ' ' && nextTokenLin >= 0) {
+                findNext();
             }
         }
 
         return newChar;
     }
 
+
     private void initBuffer() throws IOException {
-        this.buffer = new String[5];
-        this.nextChar = 0;
-        this.nextTokenLin = 0;
-        this.primLin = this.contLin = 0;
+        buffer = new String[INITIAL_BUFFER_SIZE];
+        String line = inputBuffer.readLine();
 
-        String line = this.in.readLine();
         if (line == null) {
-            this.nextTokenLin = -1;
+            nextTokenLin = -1;
         } else {
-            this.buffer[0] = line;
-            this.contLin++;
-            this.findNext();
+            buffer[0] = line;
+            lineCounter++;
+            findNext();
         }
-    }
-
-    private int appendLine(String str) {
-        if (this.contLin == 0) {
-            this.primLin = 0;
-        }
-
-        if (this.primLin + this.contLin >= this.buffer.length) {
-            String[] src = this.buffer;
-            if (this.contLin >= this.buffer.length) {
-                this.buffer = new String[2 * this.buffer.length];
-            }
-
-            System.arraycopy(src, this.primLin, this.buffer, 0, this.contLin);
-            this.nextTokenLin -= this.primLin;
-            this.primLin = 0;
-        }
-
-        buffer[this.primLin + this.contLin] = str;
-        this.contLin++;
-        return (this.primLin + this.contLin - 1);
     }
 
     private void findNext() {
         try {
-            String line = this.buffer[this.primLin];
+            String line = buffer[firstLine];
             if (line != null) {
                 int size = line.length();
-                for (int i = this.nextChar; i < size; i++)
+                for (int i = nextChar; i < size; i++)
                     if (line.charAt(i) != ' ') {
-                        this.nextTokenCol = i;
                         return;
                     }
             }
 
-            this.nextTokenLin = this.nextTokenCol = -1;
-            while ((line = this.in.readLine()) != null) {
+            nextTokenLin = -1;
+            while ((line = inputBuffer.readLine()) != null) {
                 int size = line.length();
                 for (int i = 0; i < size; i++)
                     if (line.charAt(i) != ' ') {
-                        this.nextTokenCol = i;
-                        this.nextTokenLin = this.appendLine(line);
+                        nextTokenLin = appendLine(line);
                         return;
                     }
-                this.appendLine(line);
+                appendLine(line);
             }
         } catch (IOException e) {
             throw new RuntimeException(e.toString());
         }
+    }
+
+    private void readLine() {
+        if (lineCounter <= 0) {
+            return;
+        }
+
+        buffer[firstLine] = null;
+        nextChar = 0;
+        firstLine++;
+        lineCounter--;
+
+        if ((nextTokenLin >= 0) && (nextTokenLin < firstLine)) {
+            findNext();
+        }
+    }
+
+    private int appendLine(String str) {
+        if (lineCounter == 0) {
+            firstLine = 0;
+        }
+
+        if (firstLine + lineCounter >= buffer.length) {
+            String[] src = buffer;
+            if (lineCounter >= buffer.length) {
+                buffer = new String[2 * buffer.length];
+            }
+
+            System.arraycopy(src, firstLine, buffer, 0, lineCounter);
+            nextTokenLin -= firstLine;
+            firstLine = 0;
+        }
+
+        buffer[firstLine + lineCounter] = str;
+        lineCounter++;
+        return (firstLine + lineCounter - 1);
     }
 }
