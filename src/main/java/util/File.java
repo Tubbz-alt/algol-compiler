@@ -16,9 +16,9 @@ public class File {
     private int nextTokenLin, nextTokenCol;
     private int primLin, contLin;
 
-     public File(String in) {
+     public File(String inputFilePath) {
          try {
-             this.in = new BufferedReader(new FileReader(in));
+             this.in = new BufferedReader(new FileReader(inputFilePath));
 
              this.initBuffer();
 
