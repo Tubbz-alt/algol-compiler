@@ -10,117 +10,112 @@ import java.io.*;
 
 public class File {
 
-    private static final int INITIAL_BUFFER_SIZE = 5;
+    private static final char BLANK = ' ';
+    private static final char LINE_BREAK = '\n';
+    private static final char END_OF_FILE = '\0';
 
-    private BufferedReader inputBuffer;
-    private String[] buffer;
-    private int nextChar = 0;
-    private int nextTokenLin = 0;
-    private int firstLine = 0;
-    private int lineCounter = 0;
+    private BufferedReader reader;
+    private String buffer;
+    private int nextPosition = 0;
+    private boolean hasNextToken = true;
 
     public File(String inputFilePath) {
         try {
-            inputBuffer = new BufferedReader(new FileReader(inputFilePath));
-            initBuffer();
+            reader = new BufferedReader(new FileReader(inputFilePath));
+            buffer = "";
+
+            readFirstLine();
         } catch (IOException e) {
             throw new RuntimeException(e.toString());
         }
     }
 
-    public char readChar() {
-        if (lineCounter <= 0) {
-            return '\0';
-        }
+    private void readFirstLine() throws IOException {
+        String line = reader.readLine();
 
-        char newChar;
-        String line = buffer[firstLine];
-        if (nextChar >= line.length()) {
-            newChar = '\n';
-            readLine();
-        } else {
-            newChar = line.charAt(nextChar++);
-            if (newChar != ' ' && nextTokenLin >= 0) {
-                findNext();
-            }
-        }
-
-        return newChar;
-    }
-
-
-    private void initBuffer() throws IOException {
-        buffer = new String[INITIAL_BUFFER_SIZE];
-        String line = inputBuffer.readLine();
-
-        if (line == null) {
-            nextTokenLin = -1;
-        } else {
-            buffer[0] = line;
-            lineCounter++;
-            findNext();
-        }
-    }
-
-    private void findNext() {
-        try {
-            String line = buffer[firstLine];
-            if (line != null) {
-                int size = line.length();
-                for (int i = nextChar; i < size; i++)
-                    if (line.charAt(i) != ' ') {
-                        return;
-                    }
-            }
-
-            nextTokenLin = -1;
-            while ((line = inputBuffer.readLine()) != null) {
-                int size = line.length();
-                for (int i = 0; i < size; i++)
-                    if (line.charAt(i) != ' ') {
-                        nextTokenLin = appendLine(line);
-                        return;
-                    }
-                appendLine(line);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e.toString());
-        }
-    }
-
-    private void readLine() {
-        if (lineCounter <= 0) {
+        if (line != null) {
+            buffer = line;
+            findNextCharacter();
             return;
         }
 
-        buffer[firstLine] = null;
-        nextChar = 0;
-        firstLine++;
-        lineCounter--;
+        hasNextToken = false;
+    }
 
-        if ((nextTokenLin >= 0) && (nextTokenLin < firstLine)) {
-            findNext();
+    private void findNextCharacter() {
+        try {
+            if (buffer == null) {
+                ignoreBlankLines();
+                return;
+            }
+
+            ignoreBlankCharacters();
+        } catch (IOException e) {
+            throw new RuntimeException(e.toString());
         }
     }
 
-    private int appendLine(String str) {
-        if (lineCounter == 0) {
-            firstLine = 0;
+    private void ignoreBlankCharacters() {
+        for (int i = nextPosition; i < buffer.length(); i++) {
+            if (buffer.charAt(i) != BLANK) {
+                return;
+            }
         }
+    }
 
-        if (firstLine + lineCounter >= buffer.length) {
-            String[] src = buffer;
-            if (lineCounter >= buffer.length) {
-                buffer = new String[2 * buffer.length];
+    private void ignoreBlankLines() throws IOException {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            if (line.length() == 0) {
+                setBuffer(line);
+                return;
             }
 
-            System.arraycopy(src, firstLine, buffer, 0, lineCounter);
-            nextTokenLin -= firstLine;
-            firstLine = 0;
+            for (int i = 0; i < line.length(); i++) {
+                if (line.charAt(i) != BLANK) {
+                    setBuffer(line);
+                    return;
+                }
+            }
+        }
+        hasNextToken = false;
+    }
+
+    private void setBuffer(String str) {
+        buffer = str;
+    }
+
+    public char readChar() {
+        if (!hasNextToken) {
+            return END_OF_FILE;
         }
 
-        buffer[firstLine + lineCounter] = str;
-        lineCounter++;
-        return (firstLine + lineCounter - 1);
+        char currentChar;
+
+        if (isLineBreak()) {
+            currentChar = LINE_BREAK;
+            readNextLine();
+        } else {
+            currentChar = buffer.charAt(nextPosition++);
+            if (currentChar != BLANK) {
+                findNextCharacter();
+            }
+        }
+
+        return currentChar;
+    }
+
+    private boolean isLineBreak() {
+        return nextPosition >= buffer.length();
+    }
+
+    private void readNextLine() {
+        if (!hasNextToken) {
+            return;
+        }
+
+        buffer = null;
+        nextPosition = 0;
+        findNextCharacter();
     }
 }
